@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNavicon, faXmark } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,8 +15,28 @@ function Header() {
         setShowMobileMenu(!showMobileMenu);
     };
 
+    const divRef = useRef();
+    useEffect(() => {
+        const handleScroll = () => {
+           // Perform actions when the scroll position changes
+            if (window.scrollY > 0) {
+                divRef.current.style.backgroundColor = '#f9f8f4';
+                divRef.current.style.boxShadow = '10px 6px 17px #e3dab9';
+            }else{
+                divRef.current.style.backgroundColor = 'transparent';
+                divRef.current.style.boxShadow = 'unset';
+            }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
     return (
-        <header className='header-main__wrapper'>
+        <header className='header-main__wrapper' ref={divRef}>
             <div className='header-main__container d-flex'>
                 <div className='site-logo'>
                     <Link to="/" className='logo'>

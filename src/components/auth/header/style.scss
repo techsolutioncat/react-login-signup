@@ -11,7 +11,7 @@ $headerW: 1175px; //width <= 1440(px) and width >= 1200(px);
 
     @media (max-width: 1023px) {
         height: $headerTabletH;
-        margin-top: 17px;
+        padding-top: 17px;
     }
 
     .header-main__container {
