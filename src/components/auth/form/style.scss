@@ -1,0 +1,99 @@
+/* Define standard variables and values for website */
+$formW: 376px;
+$formbg: #F9F8F4;
+$titlecolor: #372A2A;
+$subtitlecolor: #654657;
+$bgimage: url('../../../assets/images/mobile-bg.png');
+
+// Custom style css
+.auth-form {
+    width: 53%;
+    background: $formbg;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+
+    @media (max-width: 500px) {
+        background-image: $bgimage;
+        background-size: cover;
+    }
+
+    .submit-form {
+        width: $formW;
+        margin: 180px auto 0px auto;
+
+        @media (max-width: 500px) {
+            width: calc(100% - 60px);
+            padding-left: 30px;
+            padding-right: 30px;
+            margin: 90px auto 0px auto;
+        }
+
+        .form-header {
+            text-align: center;
+
+            .form-title {
+                color: $titlecolor;
+                font-size: 32px;
+                line-height: 32px;
+                letter-spacing: 10%;
+            }
+
+            .form-subtitle {
+                color: $subtitlecolor;
+                font-size: 16px;
+                line-height: 25px;
+                margin-top: 25px;
+
+                @media (max-width: 425px) {
+                    font-family: "Cairo", sans-serif;
+                }
+            }
+        }
+
+        .form-body {
+            margin-top: 40px;
+
+            .form-group {
+                margin-top: 20px;
+
+                a.btn-submit {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    padding: 19px 0px;
+                }
+            }
+        }
+    }
+
+    .form-icons {
+        margin-top: 55px;
+        justify-content: center;
+        gap: 20px;
+
+        @media (max-width: 500px) {
+            position: fixed;
+            bottom: 0;
+            background: linear-gradient(181.71deg, #F6E8EA -5%, #F9F0E6 37.12%, #F49E6D 143.7%);
+            padding-top: 28px;
+            padding-bottom: 31px;
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .icon-instagram {
+            @media (max-width: 500px) {
+                display: block;
+            }
+        }
+
+        .icon-metamask {
+            @media (max-width: 500px) {
+                display: none;
+            }
+        }
+    }
+}

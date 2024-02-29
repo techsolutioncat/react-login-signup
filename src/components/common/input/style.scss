@@ -1,0 +1,35 @@
+/* Define standard variables and values for website */
+$placeholdercolor: #24262D;
+
+.icon-input {
+    border: solid 1px #F8E6D9;
+    background: #fff;
+    align-items: center;
+    height: 60px;
+
+    .icon {
+        width: 53px;
+        border-right: solid 1px #F8E6D9;
+
+        img {
+            margin-left: 20px;
+        }
+    }
+    
+    input {
+        width: calc(100% - 53px);
+        padding-left: 12px;
+        border: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        height: 58px;
+        outline: none;
+
+        &::placeholder {
+            font-family: "Cairo", sans-serif;
+            font-size: 16px;
+            line-height: 22px;
+            color: $placeholdercolor;
+        }
+    }
+}

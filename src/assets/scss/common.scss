@@ -1,0 +1,86 @@
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// Font style css
+.font-Syne {
+    font-family: 'Syne', sans-serif;
+    /* Use the Google Font 'Syne' */
+}
+
+.font-Montserrat {
+    font-family: 'Montserrat', sans-serif;
+    /* Use the Google Font 'Montserrat' */
+}
+
+.font-Cairo {
+    font-family: 'Cairo', sans-serif;
+    /* Use the Google Font 'Cairo' */
+}
+
+.ls-none {
+    list-style: none;
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.td-none {
+    text-decoration: none;
+}
+
+// Elements style css
+.br-10 {
+    border-radius: 10px;
+}
+
+// display style css
+.d-hide {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+// Position style css
+.p-0 {
+    padding: 0px;
+}
+
+.m-0 {
+    margin: 0px;
+}

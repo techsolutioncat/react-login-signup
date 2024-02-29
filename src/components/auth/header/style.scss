@@ -1,0 +1,95 @@
+/* Define standard variables and values for website */
+$headerDesktopH: 140px;
+$headerTabletH: 60px;
+$headerW: 1175px; //width <= 1440(px) and width >= 1200(px);
+
+.header-main__wrapper {
+    position: fixed;
+    width: 100%;
+    height: $headerDesktopH;
+    background: transparent;
+
+    @media (max-width: 1023px) {
+        height: $headerTabletH;
+        margin-top: 17px;
+    }
+
+    .header-main__container {
+        width: 82%;
+        height: 100%;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+
+        @media(max-width: 1440px) {
+            width: $headerW;
+        }
+
+        @media(max-width: 1200px) {
+            width: auto;
+            padding: 0px 30px;
+        }
+
+        .site-logo {
+            .mobile-logo {
+                display: none;
+
+                @media(max-width: 767px) {
+                    display: block;
+                }
+            }
+
+            .logo {
+                @media(max-width: 767px) {
+                    display: none;
+                }
+            }
+        }
+
+        .site-navigation {
+            @media (max-width: 1023px) {
+                .nav-link {
+                    display: none;
+                }
+
+                .mobile-menu {
+                    display: block;
+                    position: relative;
+                    width: 100px;
+                    text-align: right;
+
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                    }
+
+                    ul.menu-list {
+                        position: absolute;
+                        text-align: center;
+                        width: 100%;
+                        box-shadow: 2px 3px 9px 3px rgba(244, 158, 109, 0.24);
+                        margin: 7px 0px 0px 0px;
+                        
+                        li {
+                            padding: 10px 0px;
+
+                            a.mo-nav-link {
+                                color: #24262D;
+                            }
+                        }
+                    }
+                }
+            }
+            @media (max-width: 425px) { 
+                display: none;
+            }
+            a.link-login {
+                padding: 19px 30px;
+            }
+
+            a.link-signup {
+                padding: 19px 50px;
+            }
+        }
+    }
+}

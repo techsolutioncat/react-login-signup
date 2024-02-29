@@ -1,0 +1,25 @@
+/* Define standard variables and values for website */
+$width: 47%;
+$mbilewidth: 0px;
+$bgcolor: linear-gradient(181.71deg, rgba(246, 232, 234, 0.24) -5%, rgba(249, 240, 230, 0.24) 37.12%, rgba(244, 158, 109, 0.24) 143.7%);
+$bgimage: url('../../../assets/images/subcont-bg-image.png');
+
+// Custom style css
+.sub-cont {
+    width: $width;
+    height: 100%;
+    background-image: $bgimage, $bgcolor;
+    background-size: cover;
+
+    .main-image {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
