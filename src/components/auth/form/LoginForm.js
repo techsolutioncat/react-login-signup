@@ -24,10 +24,10 @@ function Form(props) {
                 </div>
                 <div className='form-body'>
                     <div className='form-group'>
-                        <Input data={{ icon: <img src={user} alt='emailicon'></img>, type: 'text', placeholder: 'Username' }}></Input>
+                        <Input data={{ icon: <img src={user} alt='emailicon'></img>, type: 'text', name:'username', placeholder: 'Username' }}></Input>
                     </div>
                     <div className='form-group'>
-                        <Input data={{ icon: <img src={lock} alt='emailicon'></img>, type: 'password', placeholder: 'Password' }}></Input>
+                        <Input data={{ icon: <img src={lock} alt='emailicon'></img>, type: 'password', name:'password', placeholder: 'Password' }}></Input>
                     </div>
                     <div className='form-group'>
                         <Button data={{ link: '/', label: 'Proceed', LinkClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
