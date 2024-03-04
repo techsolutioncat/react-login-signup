@@ -66,11 +66,37 @@ $bgimage: url('../../../assets/images/mobile-bg.png');
             .form-group {
                 margin-top: 20px;
 
-                a.btn-submit {
+                .btn-submit {
+                    border: none;
                     display: block;
                     width: 100%;
                     text-align: center;
                     padding: 19px 0px;
+                }
+            }
+
+            .verify-code-group{
+                border: solid 1px #F8E6D9;
+                background: #fff;
+                align-items: center;
+                height: 60px;
+                padding: 0px 20px;
+                justify-content: space-between;
+                
+                .input-group {
+                    width: 37px;
+                    height: 24px;
+                    border-right: solid 1px #F8E6D9;
+
+                    input {
+                        width: 25px;
+                        height: 100%;
+                        border: none;
+                        border-bottom: 2px solid #24262D;
+                        outline: none;
+                        font-size: 22px;
+                        text-align: center;
+                    }
                 }
             }
         }

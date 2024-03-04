@@ -24,11 +24,12 @@ $placeholdercolor: #24262D;
         border-bottom-right-radius: 10px;
         height: 58px;
         outline: none;
+        font-size: 18px;
 
         &::placeholder {
             font-family: "Cairo", sans-serif;
             font-size: 16px;
-            line-height: 22px;
+            line-height: 18px;
             color: $placeholdercolor;
         }
     }

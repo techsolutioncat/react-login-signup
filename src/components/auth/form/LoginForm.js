@@ -30,10 +30,10 @@ function Form(props) {
                         <FormInput data={{ icon: <img src={lock} alt='emailicon'></img>, type: 'password', name:'password', placeholder: 'Password', required: true }}></FormInput>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/', label: 'Proceed', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ type: 'submit',url: '', label: 'Log In', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/resetpassword', label: 'I forgot my password', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ type: 'link', url: '/resetpassword', label: 'I forgot my password', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                 </div>
             </form>

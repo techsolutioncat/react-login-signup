@@ -15,7 +15,7 @@ import './style.scss'
 
 function Form(props) {
     const {title, subtitle} = props.data;
-    
+
     return (
         <div className='auth-form'>
             <form className='submit-form'>
@@ -34,10 +34,10 @@ function Form(props) {
                         <FormInput data={{ icon: <img src={phone} alt='phoneicon'></img>, type: 'tel', name:'phonenumber', placeholder: 'Phone Number', required: true }} ></FormInput>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/', label: 'Proceed', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ type: 'link', url:'/verifyemail', label: 'Proceed', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/', label: 'I already have an account', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ type: 'link', url: '/', label: 'I already have an account', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                 </div>
             </form>

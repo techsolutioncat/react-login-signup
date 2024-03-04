@@ -4,23 +4,28 @@ $greygradientButtonColor: #24262D;
 $transparentButtonColor: #24262D;
 
 // Define custom style css
-a.site-button {
+a.site-button,
+button.site-button {
     font-family: "Syne", sans-serif;
     font-size: 16px;
     line-height: 22px;
+    cursor: pointer;
 }
-a.btn-gradient {
+a.btn-gradient,
+button.btn-gradient {
     color: $gradientButtonColor;
     background: linear-gradient(113.87deg, #DD5690 14.81%, #FDB95F 88.76%);
     box-shadow: 0px 6px 18px 0px #F2A69C;
 }
 
-a.btn-greygradient {
+a.btn-greygradient,
+button.btn-greygradient {
     color: $greygradientButtonColor;
     background: linear-gradient(113.87deg, rgba(221, 86, 144, 0.1) 14.81%, rgba(252, 181, 97, 0.1) 88.76%);
 }
 
-a.btn-transparent {
+a.btn-transparent,
+button.btn-transparent {
     color: $transparentButtonColor;
     background: transparent;
 }

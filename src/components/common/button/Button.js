@@ -2,11 +2,17 @@ import { Link } from 'react-router-dom'
 import './style.scss'
 
 function Button(props) {
-    const { link, label, ButtonClass } = props.data;
+    const { type, url, label, ButtonClass } = props.data;
 
-    return (
-        <Link to={link} className={ButtonClass}>{label}</Link>
-    );
+    if (type == 'link') {
+        return (
+            <Link to={url} className={ButtonClass}>{label}</Link>
+        );
+    } else {
+        return (
+            <button type='submit' className={ButtonClass}>{label}</button>
+        );
+    }
 }
 
 export default Button;

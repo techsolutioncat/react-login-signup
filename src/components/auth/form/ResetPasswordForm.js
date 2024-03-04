@@ -17,17 +17,17 @@ function Form(props) {
                 </div>
                 <div className='form-body'>
                     <div className='form-group'>
-                        <FormInput data={{ icon: <img src={lock} alt='lockicon'></img>, type: 'password', name:'password', placeholder: 'New Password', required: true }} ></FormInput>
+                        <FormInput data={{ icon: <img src={lock} alt='lockicon'></img>, type: 'password', name:'password', placeholder: 'New Password', required: true }}></FormInput>
                     </div>
                     <div className='form-group'>
                         <FormInput data={{ icon: <img src={lock} alt='lockicon'></img>, type: 'password', name:'re-password', placeholder: 'Confirm new password', required: true }} ></FormInput>
                     </div>
                     <div className='form-button-group'>
                         <div className='form-group'>
-                            <Button data={{ link: '/', label: 'Log In', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                            <Button data={{ type: 'submit', url: '/', label: 'Log In', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                         <div className='form-group'>
-                            <Button data={{ link: '/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                            <Button data={{ type: 'link', url: '/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                     </div>
                 </div>

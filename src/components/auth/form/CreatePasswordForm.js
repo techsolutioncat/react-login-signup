@@ -24,10 +24,10 @@ function Form(props) {
                     </div>
                     <div className='form-button-group'>
                         <div className='form-group'>
-                            <Button data={{ link: '/', label: 'Log In', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                            <Button data={{ type: 'submit', url:'', label: 'Submit', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                         <div className='form-group'>
-                            <Button data={{ link: '/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                            <Button data={{ type: 'link', url:'/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                     </div>
                 </div>
