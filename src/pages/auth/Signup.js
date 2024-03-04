@@ -2,7 +2,7 @@ import Header from '../../components/auth/header/Header'
 import SubCont from '../../components/auth/subcont/Subcont'
 import Form from '../../components/auth/form/SignupForm'
 
-function Register() {
+function Signup() {
   return (
     <>
       <Header />
@@ -14,4 +14,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Signup;

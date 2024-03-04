@@ -55,6 +55,14 @@ $bgimage: url('../../../assets/images/mobile-bg.png');
         .form-body {
             margin-top: 40px;
 
+            .form-button-group {
+                margin-top: 100px;
+
+                @media (max-width: 500px) {
+                    margin-top: 20px;
+                }
+            }
+
             .form-group {
                 margin-top: 20px;
 

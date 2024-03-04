@@ -1,4 +1,4 @@
-import Input from '../../common/input/Input'
+import FormInput from '../../common/input/FormInput'
 import Button from '../../common/button/Button'
 
 //Import Social icons
@@ -24,16 +24,16 @@ function Form(props) {
                 </div>
                 <div className='form-body'>
                     <div className='form-group'>
-                        <Input data={{ icon: <img src={user} alt='emailicon'></img>, type: 'text', name:'username', placeholder: 'Username' }}></Input>
+                        <FormInput data={{ icon: <img src={user} alt='emailicon'></img>, type: 'text', name:'username', placeholder: 'Username', required: true }}></FormInput>
                     </div>
                     <div className='form-group'>
-                        <Input data={{ icon: <img src={lock} alt='emailicon'></img>, type: 'password', name:'password', placeholder: 'Password' }}></Input>
+                        <FormInput data={{ icon: <img src={lock} alt='emailicon'></img>, type: 'password', name:'password', placeholder: 'Password', required: true }}></FormInput>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/', label: 'Proceed', LinkClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ link: '/', label: 'Proceed', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                     <div className='form-group'>
-                        <Button data={{ link: '/', label: 'I forgot my password', LinkClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                        <Button data={{ link: '/resetpassword', label: 'I forgot my password', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                     </div>
                 </div>
             </form>
