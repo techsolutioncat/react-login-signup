@@ -21,6 +21,10 @@ function Form(props) {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        setFormData({
+            ...formData,
+            password: e.target.value
+        });
     };
 
     const handleRePasswordChange = async (e) => {
@@ -30,18 +34,13 @@ function Form(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setFormData({
-            ...formData,
-            password: pwd
-        });
-
         // Perform validation to check if all input fields have valid values
         if (pwd.trim() === repassword.trim()) {
             try {
                 const response = axios.post('http://localhost:8080/signup', formData);
                 console.log('Form data sent successfully');
-
                 warningRef.current.style.display = 'none';
+                // location.href = '/';
             } catch (error) {
                 if (error.response.status === 404) {
                     console.log('Resource not found');
@@ -85,7 +84,7 @@ function Form(props) {
                     </div>
                     <div className='form-button-group'>
                         <div className='form-group'>
-                            <Button data={{ type: 'submit', url: '', label: 'Submit', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }} onClick={handleSubmit}></Button>
+                            <Button data={{ type: 'submit', url: '', label: 'Submit', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                         <div className='form-group'>
                             <Button data={{ type: 'link', url: '/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
