@@ -40,7 +40,6 @@ function Form(props) {
             try {
                 const response = axios.post('http://localhost:8080/signup', formData);
                 console.log('Form data sent successfully');
-                console.log(formData);
 
                 warningRef.current.style.display = 'none';
             } catch (error) {
