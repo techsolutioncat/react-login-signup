@@ -3,6 +3,10 @@ $headerbgcolor: #F5EBE0;
 $tabbordercolor: linear-gradient(90deg, #845DEA 0%, #EB5DB9 99.7%);
 $bgimage: url('../../assets/images/card-image.png');
 
+h1.page-title {
+    text-align: center;
+}
+
 .portlate {
     margin-bottom: 48px;
 
@@ -15,11 +19,19 @@ $bgimage: url('../../assets/images/card-image.png');
 
         ul {
             justify-content: center;
-
+            @media (max-width: 7680px) {
+                padding: 0px;
+                display: flex;
+                align-items: center;
+            }
             li {
                 list-style: none;
                 padding: 15px 50px;
                 cursor: pointer;
+
+                @media (max-width: 500px) {
+                    padding: 0px 23px;
+                }
 
                 &.active {
                     position: relative;
@@ -28,7 +40,13 @@ $bgimage: url('../../assets/images/card-image.png');
                     padding: 0px 50px;
                     height: 52px;
                     display: flex;
+                    margin-top: -7px;
                     align-items: center;
+
+                    @media (max-width: 500px) {
+                        padding: 0px 23px;
+                        margin-top: 0px;
+                    }
 
                     &::after {
                         content: '';
@@ -60,11 +78,21 @@ $bgimage: url('../../assets/images/card-image.png');
         padding: 23px 78px 60px 78px;
         background: rgba(248, 230, 217, 0.25);
 
+        @media (max-width: 500px) {
+            padding: 23px 0px 0px 0px;
+        }
+
         .action-group {
             align-items: center;
             justify-content: space-between;
             border-bottom: solid 2px rgba(243, 222, 196, 1);
-            
+
+            @media (max-width: 700px) {
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 25px;
+            }
+
             .information {
                 p {
                     color: #654657;
@@ -101,6 +129,10 @@ $bgimage: url('../../assets/images/card-image.png');
                     display: flex;
                     align-items: center;
                     gap: 10px;
+
+                    @media (max-width: 768px) {
+                        padding: 16px 37px;
+                    }
                 }
             }
         }
@@ -110,6 +142,7 @@ $bgimage: url('../../assets/images/card-image.png');
             flex-wrap: wrap;
             gap: 16px;
             margin: 32px 0px;
+            justify-content: center;
 
             .card {
                 width: 312px;
@@ -130,7 +163,7 @@ $bgimage: url('../../assets/images/card-image.png');
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    
+
                     .icons {
                         display: flex;
                         gap: 16px;
@@ -147,7 +180,7 @@ $bgimage: url('../../assets/images/card-image.png');
                         border-radius: 50%;
                         cursor: pointer;
 
-                        path{
+                        path {
                             fill: #fff;
                         }
                     }
@@ -157,7 +190,7 @@ $bgimage: url('../../assets/images/card-image.png');
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    
+
                     p {
                         line-height: 21px;
                         color: #fff;

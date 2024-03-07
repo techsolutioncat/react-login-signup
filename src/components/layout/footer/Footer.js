@@ -8,6 +8,7 @@ import twitter from '../../../assets/images/svg/twitter.svg'
 import nothing from '../../../assets/images/nothing.png'
 import send from '../../../assets/images/send.png'
 import footerLogo from '../../../assets/images/footer-logo.png'
+import footermobileLogo from '../../../assets/images/mobile-footer-logo.png'
 import './style.scss'
 
 function Footer() {
@@ -43,6 +44,10 @@ function Footer() {
                     </div>
                 </div>
             </div>
+            <Link to='/myfocus' className='footermobileLogo'>
+                <img src={footermobileLogo} alt='logo'></img>
+            </Link>
+
             <div className='copyright'>
                 <p className='font-Cairo fw-400 fs-16'>© 2023 Design. All right reserves</p>
             </div>

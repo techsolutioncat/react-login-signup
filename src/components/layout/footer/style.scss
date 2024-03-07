@@ -8,9 +8,18 @@ $footerbottomhrcolor: linear-gradient(90deg, #FFDA65 -0.73%, #FEB266 -0.72%, #FF
     padding-bottom: 40px;
     box-shadow: 0px -24px 41px 0px #FB8F4040;
 
+    @media (max-width: 768px) {
+        border-top: 4px solid rgba(233, 76, 104, 0.7);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
     .page-width {
         gap: 10px;
         position: relative;
+
+        @media (max-width: 1300px) {
+            padding: 0px;
+        }
 
         &::after {
             content: '';
@@ -18,6 +27,10 @@ $footerbottomhrcolor: linear-gradient(90deg, #FFDA65 -0.73%, #FEB266 -0.72%, #FF
             bottom: -40px;
             width: 100%;
             height: 2px;
+
+            @media (max-width: 768px) {
+                display: none;
+            }
         }
 
         &::after {
@@ -26,6 +39,10 @@ $footerbottomhrcolor: linear-gradient(90deg, #FFDA65 -0.73%, #FEB266 -0.72%, #FF
 
         .footer-logo {
             width: 284px;
+
+            @media (max-width: 1300px) {
+                display: none;
+            }
 
             a.footer-button {
                 margin-top: 44px;
@@ -78,8 +95,23 @@ $footerbottomhrcolor: linear-gradient(90deg, #FFDA65 -0.73%, #FEB266 -0.72%, #FF
         margin-top: 50px;
         text-align: center;
 
+        @media (max-width: 768px) {
+            margin-top: 0px;
+        }
+
         p {
             color: #654657;
+        }
+    }
+
+    .footermobileLogo {
+        display: none;
+
+        @media (max-width: 768px) {
+            display: block;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
         }
     }
 }

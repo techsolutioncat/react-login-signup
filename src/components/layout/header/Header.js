@@ -54,7 +54,7 @@ function Header(props) {
         }
     }
 
-    const [showMobileMenu, setShowMobileMenu] = useState(true);
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     const toggleMobileMenu = () => {
         setShowMobileMenu(!showMobileMenu);

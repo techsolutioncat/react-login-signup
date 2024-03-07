@@ -9,7 +9,7 @@ body {
         margin: 0 auto;
 
         @media (max-width: 1300px) {
-            width: 100%;
+            width: calc(100% - 60px);
             padding: 0px 30px;
         }
     }

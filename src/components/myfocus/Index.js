@@ -13,6 +13,7 @@ function MyFocus() {
 
     return (
         <div className='page-width'>
+            <h1 className='page-title font-Syne fw-600 fs-32'>Your Focus</h1>
             <div className='portlate br-24'>
                 <div className='tab-header'>
                     <ul className='d-flex'>

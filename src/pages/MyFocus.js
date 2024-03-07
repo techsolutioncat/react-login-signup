@@ -7,8 +7,8 @@ function MyFocus() {
   return (
     <>
       <Header page='Focus Point' />
-      {/* <Cont />
-      <Footer /> */}
+      <Cont />
+      <Footer />
     </>
   );
 }
