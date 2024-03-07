@@ -3,6 +3,8 @@ $navBorderColor: linear-gradient(90deg, #875DE9 0%, #EB5DB9 100%);
 $activeTabBorderColor: linear-gradient(90deg, #845DEA 0%, #EB5DB9 99.7%);
 
 .header-main__wrapper {
+    position: relative;
+    
     .header-main__container {
         .site-navigation {
             ul.nav-link-list {

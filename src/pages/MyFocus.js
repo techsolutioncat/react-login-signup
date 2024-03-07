@@ -1,9 +1,13 @@
 import Header from '../components/layout/header/Header'
+import Footer from '../components/layout/footer/Footer'
 
 function MyFocus() {
-    return (
+  return (
+    <>
       <Header page='Focus Point' />
-    );
-  }
-  
-  export default MyFocus;
+      <Footer />
+    </>
+  );
+}
+
+export default MyFocus;

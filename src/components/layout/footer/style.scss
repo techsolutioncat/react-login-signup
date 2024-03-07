@@ -1,0 +1,84 @@
+/* Define standard variables and values for website */
+$footerbgcolor: linear-gradient(41.32deg, #FFDA65 22.85%, #FD9C67 87.27%);
+$footerbottomhrcolor: linear-gradient(90deg, #FFDA65 -0.73%, #FEB266 -0.72%, #FFDA65 101.17%);
+
+.page-footer {
+    background: $footerbgcolor;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .page-width {
+        gap: 10px;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            height: 2px;
+        }
+
+        &::after {
+            background: $footerbottomhrcolor;
+        }
+
+        .footer-logo {
+            width: 284px;
+
+            a.footer-button {
+                margin-top: 44px;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 19px 0px;
+            }
+        }
+
+        .footer-content {
+            width: 946px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            .social-icons {
+                gap: 24px;
+                justify-content: center;
+            }
+
+            .footer-links {
+                margin-top: 17px;
+                flex-direction: column;
+                text-align: center;
+
+                .link {
+                    color: #24262D;
+                    ;
+                }
+            }
+
+            .footer-brands {
+                .brands {
+                    gap: 40px;
+                    width: 100%;
+                    text-align: center;
+                    justify-content: center;
+                }
+
+                .label {
+                    text-align: center;
+                    color: #654657;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        margin-top: 50px;
+        text-align: center;
+
+        p {
+            color: #654657;
+        }
+    }
+}

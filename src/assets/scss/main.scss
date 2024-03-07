@@ -4,6 +4,11 @@
 body {
     margin: 0;
     
+    .page-width {
+        width: 1240px;
+        margin: 0 auto;
+    }
+
     .page-wrap {
         height: 100vh;
         min-height: 900px;
