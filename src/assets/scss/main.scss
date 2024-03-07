@@ -7,6 +7,11 @@ body {
     .page-width {
         width: 1240px;
         margin: 0 auto;
+
+        @media (max-width: 1300px) {
+            width: 100%;
+            padding: 0px 30px;
+        }
     }
 
     .page-wrap {
