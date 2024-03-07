@@ -47,7 +47,7 @@ function Form(props) {
             .then(response => {
                 console.log('Form data sent successfully');
                 if (response.data.auth == true) {
-                    location.href = '/home';
+                    location.href = '/myfocus';
                 } else {
                     warningRef.current.style.display = 'block';
                 }

@@ -9,6 +9,7 @@ import './style.scss'
 
 function Form(props) {
     const warningRef = useRef();
+    const infoRef = useRef();
     const { title, subtitle, name, email, tel } = props.data;
     const [pwd, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
@@ -36,21 +37,27 @@ function Form(props) {
 
         // Perform validation to check if all input fields have valid values
         if (pwd.trim() === repassword.trim()) {
-            try {
-                const response = axios.post('http://localhost:8080/signup', formData);
-                console.log('Form data sent successfully');
-                warningRef.current.style.display = 'none';
-                // location.href = '/';
-            } catch (error) {
-                if (error.response.status === 404) {
-                    console.log('Resource not found');
-                    // Handle 404 error
-                } else {
-                    console.error('An error occurred:', error);
-                    // Handle other errors
-                }
-            }
+            axios.post('http://localhost:8080/signup', formData)
+                .then(response => {
+                    console.log('Form data sent successfully');
+                    if(response.data.registed === true) {
+                        warningRef.current.style.display = 'none';
+                        infoRef.current.style.display = 'block';
+                    }else{
+                        location.href="/myfocus";
+                    }
+                })
+                .catch(error => {
+                    if (error.response.status === 404) {
+                        console.log('Resource not found');
+                        // Handle 404 error
+                    } else {
+                        console.error('An error occurred:', error);
+                        // Handle other errors
+                    }
+                });
         } else {
+            infoRef.current.style.display = 'none';
             warningRef.current.style.display = 'block';
         }
     };
@@ -66,7 +73,10 @@ function Form(props) {
                     <input type='hidden' name="email" value={email}></input>
                     <input type='hidden' name="phone" value={tel}></input>
                     <div className='form-group'>
-                        <div className='warning form-message d-hide font-Syne' ref={warningRef}>Please enter the password as same confirm password</div>
+                        <div className='info form-message d-hide font-Syne' ref={infoRef}>You are already registered.</div>
+                    </div>
+                    <div className='form-group'>
+                        <div className='warning form-message d-hide font-Syne' ref={warningRef}>Please enter the password as same confirm password.</div>
                     </div>
                     <div className='form-group'>
                         <div className='icon-input d-flex br-10'>
@@ -87,7 +97,7 @@ function Form(props) {
                             <Button data={{ type: 'submit', url: '', label: 'Submit', ButtonClass: 'site-button btn-submit btn-gradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                         <div className='form-group'>
-                            <Button data={{ type: 'link', url: '/', label: 'Cancel reset and go back', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
+                            <Button data={{ type: 'link', url: '/', label: 'I already have an account', ButtonClass: 'site-button btn-submit btn-greygradient font-Syne fw-700 br-10 br-10 td-none' }}></Button>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/auth/LogIn'
 import Signup from './pages/auth/Signup'
 import ResetPassword from './pages/auth/ResetPassword'
-import Home from './pages/auth/Home'
+import MyFocus from './pages/MyFocus'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/resetpassword' element={<ResetPassword />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/myfocus' element={<MyFocus />} />
           <Route />
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,43 @@
+/* Define standard variables and values for website */
+$navBorderColor: linear-gradient(90deg, #875DE9 0%, #EB5DB9 100%);
+$activeTabBorderColor: linear-gradient(90deg, #845DEA 0%, #EB5DB9 99.7%);
+
+.header-main__wrapper {
+    .header-main__container {
+        .site-navigation {
+            ul.nav-link-list {
+                gap: 16px;
+
+                li.nav-link {
+                    position: relative;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        height: 3px;
+                    }
+
+                    &:hover::after,
+                    &.active::after {
+                        background: $navBorderColor;
+                    }
+
+                    img.nav-icon {
+                        padding: 19px;
+                    }
+                }
+            }
+        }
+
+        .logout {
+            .nav-link {
+                gap: 19px;
+                color: #DAB397;
+            }
+        }
+    }
+}
