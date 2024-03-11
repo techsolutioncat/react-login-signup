@@ -19,11 +19,13 @@ h1.page-title {
 
         ul {
             justify-content: center;
+
             @media (max-width: 7680px) {
                 padding: 0px;
                 display: flex;
                 align-items: center;
             }
+
             li {
                 list-style: none;
                 padding: 15px 50px;
@@ -224,5 +226,15 @@ h1.page-title {
                 background: linear-gradient(113.87deg, rgba(221, 86, 144, 0.1) 14.81%, rgba(252, 181, 97, 0.1) 88.76%);
             }
         }
+    }
+}
+
+.confirm-modal-content {
+    padding: 10px;
+
+    .modal-footer {
+        display: flex;
+        justify-content: right;
+        gap: 10px;
     }
 }

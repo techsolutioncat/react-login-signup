@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './style.scss'
 
-const Modal = ({ isOpen, onClose, id, titlevalue, contentvalue }) => {
+const Modal = ({ focusData, isOpen, onClose, id, titlevalue, contentvalue }) => {
 
     const modalStyle = {
         display: isOpen ? 'block' : 'none',
@@ -55,6 +55,7 @@ const Modal = ({ isOpen, onClose, id, titlevalue, contentvalue }) => {
                 console.log('Form data sent successfully');
                 if (response.data.successful) {
                     onClose();
+                    focusData();
                 }
             })
             .catch(error => {

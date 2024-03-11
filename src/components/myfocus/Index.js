@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 import Modal from '../modal';
 
 import plus from '../../assets/images/svg/plus.svg'
@@ -15,6 +16,70 @@ import './style.scss'
 function MyFocus() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rowID, setRowId] = useState(0);
+    const [data, setData] = useState([]);
+    const [showConfirm, setShowConfirm] = useState(false);
+
+    const modalStyle = {
+        display: showConfirm ? 'block' : 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        zIndex: 999
+    };
+
+    const contentStyle = {
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: '#fff',
+        borderRadius: '5px',
+        boxShadow: '0 3px 6px rgba(0,0,0,0.16)'
+    };
+
+    const handleGetData = () => {
+        axios.post('http://localhost:8080/getData', { pageid: 1 })
+            .then(response => {
+                console.log('Form data sent successfully');
+                setData(response.data);
+
+            })
+            .catch(error => {
+                if (error.response.status === 404) {
+                    console.log('Resource not found');
+                    // Handle 404 error
+                } else {
+                    console.error('An error occurred:', error);
+                    // Handle other errors
+                }
+            });
+    }
+
+
+    useEffect(() => {
+        return () => {
+            handleGetData();
+        };
+    }, []);
+
+    const handleRemove = (id) => {
+        setShowConfirm(true);
+        setRowId(id);
+    }
+
+    const handleConfirm = () => {
+        axios.post('http://localhost:8080/removefocus', {id: rowID})
+            .then(response => {
+                console.log('Form data sent successfully');
+                if (response.data.success) {
+                    handleGetData();
+                    setShowConfirm(false);
+                }
+            });
+    };
 
     const handleOpenAddModal = () => {
         setRowId(0);
@@ -37,10 +102,10 @@ function MyFocus() {
                 <div className='tab-header'>
                     <ul className='d-flex'>
                         <li className='active'>
-                            <Link to='/#' className='font-Cairo fw-700 fs-16 td-none'>In progress</Link>
+                            <Link to='/myfocus' className='font-Cairo fw-700 fs-16 td-none'>In progress</Link>
                         </li>
                         <li>
-                            <Link to='/#' className='font-Cairo fw-700 fs-16 td-none'>Completed</Link>
+                            <Link to='/myfocus' className='font-Cairo fw-700 fs-16 td-none'>Completed</Link>
                         </li>
                     </ul>
                 </div>
@@ -59,133 +124,29 @@ function MyFocus() {
                         </div>
                     </div>
                     <div className='card-list'>
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
+                        {data && data.map(row => (
+                            <div className='card' key={row.id}>
+                                <div className='card-title'>
+                                    <p className='m-0 font-Syne fw-700 fs-16'>{row.title}</p>
+                                    <img src={help}></img>
                                 </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' onClick={handleOpenUpdateModal} />
-                                </a>
-                            </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
+                                <div className='card-icons'>
+                                    <div className='icons'>
+                                        <img src={users}></img>
+                                        <img src={fizz}></img>
+                                    </div>
+                                    <a className='btn-edit'>
+                                        <FontAwesomeIcon icon={faEdit} className='fa-edit' onClick={handleOpenUpdateModal} />
+                                    </a>
                                 </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
-                                </a>
-                            </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
+                                <div className='card-text'>
+                                    <p className='font-Cairo fw-500 fs-14'>{row.content}</p>
+                                    <a className='btn-remove' onClick={() => handleRemove(row.id)}>
+                                        <FontAwesomeIcon icon={faRemove} className='fa-remove' />
+                                    </a>
                                 </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
-                                </a>
                             </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
-                                </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
-                                </a>
-                            </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
-                                </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
-                                </a>
-                            </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-title'>
-                                <p className='m-0 font-Syne fw-700 fs-16'>Distinctio perspiciatis sint nihil nulla.</p>
-                                <img src={help}></img>
-                            </div>
-                            <div className='card-icons'>
-                                <div className='icons'>
-                                    <img src={users}></img>
-                                    <img src={fizz}></img>
-                                </div>
-                                <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
-                                </a>
-                            </div>
-                            <div className='card-text'>
-                                <p className='font-Cairo fw-500 fs-14'>Voluptatem soluta omnis doloremque iusto odit ab architecto voluptas.</p>
-                                <a className='btn-remove'>
-                                    <FontAwesomeIcon icon={faRemove} className='fa-remove' />
-                                </a>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className='load-more'>
                         <a className='btn-load-more font-Syne fw-500 fs-16 td-none br-10'>Load More</a>
@@ -193,7 +154,18 @@ function MyFocus() {
                 </div>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal} id={rowID}  titlevalue='' contentvalue=''></Modal>
+            <Modal focusData={handleGetData} isOpen={isModalOpen} onClose={handleCloseModal} id={rowID} titlevalue='' contentvalue=''></Modal>
+            {showConfirm && (
+                <div className="modal" style={modalStyle}>
+                    <div className="confirm-modal-content" style={contentStyle}>
+                        <div className='modal-header m-0 font-Syne fw-700 fs-25'><p>Are you sure you want to remove?</p></div>
+                        <div className='modal-footer'>
+                            <button onClick={handleConfirm} className="m-0 font-Syne fw-600 fs-16 btn-info">Okay</button>
+                            <button onClick={() => setShowConfirm(false)} className="m-0 font-Syne fw-600 fs-16 btn-light">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
