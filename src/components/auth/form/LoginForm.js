@@ -47,6 +47,7 @@ function Form(props) {
             .then(response => {
                 console.log('Form data sent successfully');
                 if (response.data.auth == true) {
+                    localStorage.setItem('accessToken', response.data.accessToken);
                     location.href = '/myfocus';
                 } else {
                     warningRef.current.style.display = 'block';

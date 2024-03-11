@@ -20,6 +20,11 @@ import megamenu from '../../../assets/images/svg/megamenu.svg'
 import './style.scss'
 
 function Header(props) {
+    const signout = () => {
+        localStorage.removeItem('accessToken');
+        location.href = '/';
+    }
+
     const items = [
         {
             name: 'Homepage',
@@ -75,7 +80,7 @@ function Header(props) {
                     <NavLink data={items} />
                 </div>
                 <div className='logout'>
-                    <Link to='/' className='nav-link btn-transparent font-Syne fs-16 fw-600 td-none d-flex'>
+                    <Link onClick={signout} className='nav-link btn-transparent font-Syne fs-16 fw-600 td-none d-flex'>
                         <img className='nav-icon' src={logout} alt='nav-logo'></img>
                         <span>Log out</span>
                     </Link>

@@ -44,6 +44,7 @@ function Form(props) {
                         warningRef.current.style.display = 'none';
                         infoRef.current.style.display = 'block';
                     }else{
+                        localStorage.setItem('accessToken', response.data.accessToken);
                         location.href="/myfocus";
                     }
                 })

@@ -14,6 +14,11 @@ import { faEdit, faRemove } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 
 function MyFocus() {
+    const accessToken = localStorage.getItem('accessToken');
+    if(accessToken == '' || accessToken == null || accessToken == undefined) {
+        location.href = '/';
+    }
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rowID, setRowId] = useState(0);
     const [pageID, setPageID] = useState(1);
