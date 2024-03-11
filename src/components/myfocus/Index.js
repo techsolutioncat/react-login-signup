@@ -16,6 +16,7 @@ import './style.scss'
 function MyFocus() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rowID, setRowId] = useState(0);
+    const [pageID, setPageID] = useState(1);
     const [data, setData] = useState([]);
     const [showConfirm, setShowConfirm] = useState(false);
 
@@ -40,8 +41,13 @@ function MyFocus() {
         boxShadow: '0 3px 6px rgba(0,0,0,0.16)'
     };
 
+    const loadmore = () => {
+        setPageID(pageID + 1);
+        handleGetData();
+    }
+
     const handleGetData = () => {
-        axios.post('http://localhost:8080/getData', { pageid: 1 })
+        axios.post('http://localhost:8080/getData', { pageid: pageID })
             .then(response => {
                 console.log('Form data sent successfully');
                 setData(response.data);
@@ -66,8 +72,14 @@ function MyFocus() {
     }, []);
 
     const handleRemove = (id) => {
+        setPageID(1);
         setShowConfirm(true);
         setRowId(id);
+    }
+
+    const reloadData = () => {
+        setPageID(1);
+        handleGetData();
     }
 
     const handleConfirm = () => {
@@ -86,8 +98,8 @@ function MyFocus() {
         setIsModalOpen(true);
     };
 
-    const handleOpenUpdateModal = () => {
-        setRowId(1);
+    const handleOpenUpdateModal = (id) => {
+        setRowId(id);
         setIsModalOpen(true);
     }
 
@@ -136,7 +148,7 @@ function MyFocus() {
                                         <img src={fizz}></img>
                                     </div>
                                     <a className='btn-edit'>
-                                        <FontAwesomeIcon icon={faEdit} className='fa-edit' onClick={handleOpenUpdateModal} />
+                                        <FontAwesomeIcon icon={faEdit} className='fa-edit' onClick={() => handleOpenUpdateModal(row.id)} />
                                     </a>
                                 </div>
                                 <div className='card-text'>
@@ -149,12 +161,13 @@ function MyFocus() {
                         ))}
                     </div>
                     <div className='load-more'>
-                        <a className='btn-load-more font-Syne fw-500 fs-16 td-none br-10'>Load More</a>
+                        <a className='btn-load-more font-Syne fw-500 fs-16 td-none br-10' onClick={loadmore}>Load More</a>
                     </div>
                 </div>
             </div>
-
-            <Modal focusData={handleGetData} isOpen={isModalOpen} onClose={handleCloseModal} id={rowID} titlevalue='' contentvalue=''></Modal>
+            { isModalOpen && (
+                <Modal focusData={reloadData} isOpen={isModalOpen} onClose={handleCloseModal} id={rowID}></Modal>
+            )}
             {showConfirm && (
                 <div className="modal" style={modalStyle}>
                     <div className="confirm-modal-content" style={contentStyle}>

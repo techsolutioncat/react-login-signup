@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import './style.scss'
 
-const Modal = ({ focusData, isOpen, onClose, id, titlevalue, contentvalue }) => {
+const Modal = ({ focusData, isOpen, onClose, id }) => {
 
     const modalStyle = {
         display: isOpen ? 'block' : 'none',
@@ -28,22 +28,38 @@ const Modal = ({ focusData, isOpen, onClose, id, titlevalue, contentvalue }) => 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [formData, setFormData] = useState();
+    const titleRef = useRef(null);
+    const contentRef = useRef(null);
 
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
-    };
+    const handleGetDataByID = () => {
+        axios.post('http://localhost:8080/getDataByID', { id: id })
+            .then(response => {
+                // console.log('Form data sent successfully');
+                setTitle(response.data.title);
+                setContent(response.data.content);
 
-    const handleContentChange = (e) => {
-        setContent(e.target.value);
-    };
+            })
+            .catch(error => {
+                if (error.response.status === 404) {
+                    console.log('Resource not found');
+                    // Handle 404 error
+                } else {
+                    console.error('An error occurred:', error);
+                    // Handle other errors
+                }
+            });
+    }
+
+    handleGetDataByID();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+
         setFormData({
             id: id,
-            title: title,
-            content: content
+            title: titleRef.current.value,
+            content: contentRef.current.value
         });
 
         if (formData === undefined) {
@@ -52,8 +68,8 @@ const Modal = ({ focusData, isOpen, onClose, id, titlevalue, contentvalue }) => 
 
         axios.post('http://localhost:8080/savefocus', formData)
             .then(response => {
-                console.log('Form data sent successfully');
-                if (response.data.successful) {
+                // console.log('Form data sent successfully');
+                if (response.data.success) {
                     onClose();
                     focusData();
                 }
@@ -75,11 +91,11 @@ const Modal = ({ focusData, isOpen, onClose, id, titlevalue, contentvalue }) => 
                 <div className='modal-header m-0 font-Syne fw-700 fs-25'>ADD/EDIT</div>
                 <div className='form-group'>
                     <p className='m-0 font-Syne fw-700 fs-16'>Title</p>
-                    <input type="text" name="title" className="focusTitle" placeholder="Title" onChange={handleTitleChange} required defaultValue={titlevalue} />
+                    <input type="text" ref={titleRef} name="title" className="focusTitle" placeholder="Title" required defaultValue={title} />
                 </div>
                 <div className='form-group'>
                     <p className='m-0 font-Syne fw-700 fs-16'>Content</p>
-                    <textarea className='content' name="focusContent" placeholder='Text' rows={2} onChange={handleContentChange} required defaultValue={contentvalue}></textarea>
+                    <textarea className='content' ref={contentRef} name="focusContent" placeholder='Text' rows={2} required defaultValue={content}></textarea>
                 </div>
                 <div className='modal-footer'>
                     <button type='submit' className='m-0 font-Syne fw-600 fs-16 btn-info'>Save</button>
