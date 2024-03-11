@@ -1,0 +1,43 @@
+.modal-wrap {
+    .modal-content {
+        width: 450px;
+        height: 250px;
+
+        input,
+        textarea {
+            margin-top: 4px;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            background: #F5EBE0;
+            height: 35px;
+            padding: 0px 20px;
+        }
+
+        .form-group {
+            padding: 0px 20px;
+            margin: 15px 0px;
+        }
+
+        .modal-footer {
+            display: flex;
+            align-items: center;
+            background: #F5EBE0;
+            height: 65px;
+            padding: 0px 20px;
+
+            display: flex;
+            justify-content: right;
+            gap: 10px;
+
+            button {
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

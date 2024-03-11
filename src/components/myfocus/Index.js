@@ -1,4 +1,7 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import Modal from '../modal';
+
 import plus from '../../assets/images/svg/plus.svg'
 import help from '../../assets/images/svg/help-icon.svg'
 import users from '../../assets/images/svg/users.svg'
@@ -10,6 +13,22 @@ import { faEdit, faRemove } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 
 function MyFocus() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [rowID, setRowId] = useState(0);
+
+    const handleOpenAddModal = () => {
+        setRowId(0);
+        setIsModalOpen(true);
+    };
+
+    const handleOpenUpdateModal = () => {
+        setRowId(1);
+        setIsModalOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className='page-width'>
@@ -36,7 +55,7 @@ function MyFocus() {
                             </div>
                         </div>
                         <div className='button'>
-                            <a className='add-new font-Syne fw-700 fs-18 td-none'><img src={plus}></img>Add new focus point</a>
+                            <a className='add-new font-Syne fw-700 fs-18 td-none' onClick={handleOpenAddModal}><img src={plus}></img>Add new focus point</a>
                         </div>
                     </div>
                     <div className='card-list'>
@@ -51,7 +70,7 @@ function MyFocus() {
                                     <img src={fizz}></img>
                                 </div>
                                 <a className='btn-edit'>
-                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' />
+                                    <FontAwesomeIcon icon={faEdit} className='fa-edit' onClick={handleOpenUpdateModal} />
                                 </a>
                             </div>
                             <div className='card-text'>
@@ -173,6 +192,8 @@ function MyFocus() {
                     </div>
                 </div>
             </div>
+
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} id={rowID}  titlevalue='' contentvalue=''></Modal>
         </div>
     );
 }
