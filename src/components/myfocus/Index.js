@@ -17,11 +17,6 @@ function MyFocus() {
     const accessToken = localStorage.getItem('accessToken');
     if(accessToken == '' || accessToken == null || accessToken == undefined) {
         location.href = '/';
-
-
-
-
-        dsdfsdfsdfsdfsdf
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
